@@ -15,5 +15,16 @@ public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "X
 @attached(member, names: arbitrary)
 public macro XMLPropertyList(tagNames: [String]) = #externalMacro(module: "XMLDataParserMacros", type: "XMLDataMacro")
 
+/*
+ _ tagName: String,
+ _ dataName: String,
+ _ valueName: String,
+ propertyNames: [String]
+ */
 @freestanding(expression)
-public macro XMLPropertyParser(_ valueName: String,_ btempItemName: String) = #externalMacro(module: "XMLDataParserMacros", type: "XMLParserMacro")
+public macro XMLPropertyParser(
+    _ tagName: String,
+    _ dataName: String,
+    _ valueName: String,
+    propertyNames: [String]
+) = #externalMacro(module: "XMLDataParserMacros", type: "XMLParserMacro")

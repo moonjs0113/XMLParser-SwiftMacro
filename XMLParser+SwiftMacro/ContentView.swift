@@ -15,6 +15,9 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("(ParkingLotMacro.self)")
+            Button("Dbueg") {
+                print()
+            }
         }
         .padding()
     }

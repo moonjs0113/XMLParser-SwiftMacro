@@ -8,6 +8,7 @@ import XMLDataParserMacros
 
 let testMacros: [String: Macro.Type] = [
     "stringify": StringifyMacro.self,
+    "XMLPropertyParser": XMLParserMacro.self,
     "XMLPropertyList": XMLDataMacro.self,
 ]
 #endif
@@ -42,10 +43,32 @@ final class XMLDataParserTests: XCTestCase {
 #if canImport(XMLDataParserMacros)
         assertMacroExpansion(
     """
-    #XMLPropertyParser("value","tempItem")
+    #XMLPropertyParser("tagName", "data", "value", propertyNames: ["name"])
     """,
     expandedSource: """
-    var raw: String?
+    if tagName == "name" {
+        data?.name = value
+    }
+    """,
+    macros: testMacros
+        )
+#else
+        throw XCTSkip("macros are only supported when running tests for the host platform")
+#endif
+    }
+    
+    func testXMLParserMoreThanTwoProperty() throws {
+#if canImport(XMLDataParserMacros)
+        assertMacroExpansion(
+    """
+    #XMLPropertyParser("tagName", "data", "value", propertyNames: ["name", "age"])
+    """,
+    expandedSource: """
+    if tagName == "name" {
+        data?.name = value
+    } else if tagName == "age" {
+        data?.age = value
+    }
     """,
     macros: testMacros
         )

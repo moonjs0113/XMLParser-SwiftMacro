@@ -12,3 +12,4 @@ import XMLDataParser
 class MacroParkingLot: NSObject {
     
 }
+

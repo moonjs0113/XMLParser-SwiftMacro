@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import XMLDataParser
 
 final class MacroParkingLotXMLParserM: NSObject, XMLParserDelegate {
-    private var value: String?
+    private var tagName: String?
     private var itemList: [MacroParkingLot] = []
-    private var tempItem: MacroParkingLot?
+    private var data: MacroParkingLot?
     
     func parser(
         _ parser: XMLParser,
@@ -20,9 +21,9 @@ final class MacroParkingLotXMLParserM: NSObject, XMLParserDelegate {
         attributes attributeDict: [String : String] = [:]
     ) {
         if elementName == "item" {
-            self.tempItem = MacroParkingLot()
+            self.data = MacroParkingLot()
         }
-        self.value = elementName
+        self.tagName = elementName
     }
     
     func parser(
@@ -31,35 +32,36 @@ final class MacroParkingLotXMLParserM: NSObject, XMLParserDelegate {
         namespaceURI: String?,
         qualifiedName qName: String?) {
             if elementName == "item" {
-                if let tempItem {
-                    self.itemList.append(tempItem)
+                if let data {
+                    self.itemList.append(data)
                 }
-                self.tempItem = nil
+                self.data = nil
             }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return }
-        
-        if value == "airportEng" {
-            tempItem?.airportEng = string
-        } else if value == "airportKor" {
-            tempItem?.airportKor = string
-        } else if value == "parkingAirportCodeName" {
-            tempItem?.parkingAirportCodeName = string
-        } else if value == "parkingCongestion" {
-            tempItem?.parkingCongestion = string
-        } else if value == "parkingCongestionDegree" {
-            tempItem?.parkingCongestionDegree = string
-        } else if value == "parkingOccupiedSpace" {
-            tempItem?.parkingOccupiedSpace = string
-        } else if value == "parkingTotalSpace" {
-            tempItem?.parkingTotalSpace = string
-        } else if value == "sysGetdate" {
-            tempItem?.sysGetdate = string
-        } else if value == "sysGettime" {
-            tempItem?.sysGettime = string
-        }
+        let propertyList = Mirror(reflecting: MacroParkingLot()).children.compactMap { $0.label }
+        #XMLPropertyParser("tagName", "data", "string", propertyNames: propertyList)
+//        if value == "airportEng" {
+//            tempItem?.airportEng = string
+//        } else if value == "airportKor" {
+//            tempItem?.airportKor = string
+//        } else if value == "parkingAirportCodeName" {
+//            tempItem?.parkingAirportCodeName = string
+//        } else if value == "parkingCongestion" {
+//            tempItem?.parkingCongestion = string
+//        } else if value == "parkingCongestionDegree" {
+//            tempItem?.parkingCongestionDegree = string
+//        } else if value == "parkingOccupiedSpace" {
+//            tempItem?.parkingOccupiedSpace = string
+//        } else if value == "parkingTotalSpace" {
+//            tempItem?.parkingTotalSpace = string
+//        } else if value == "sysGetdate" {
+//            tempItem?.sysGetdate = string
+//        } else if value == "sysGettime" {
+//            tempItem?.sysGettime = string
+//        }
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {

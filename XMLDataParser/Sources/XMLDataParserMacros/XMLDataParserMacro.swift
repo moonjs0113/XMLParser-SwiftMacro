@@ -22,7 +22,7 @@ public struct StringifyMacro: ExpressionMacro {
         guard let argument = node.argumentList.first?.expression else {
             fatalError("compiler bug: the macro does not have any arguments")
         }
-
+        
         return "(\(argument), \(literal: argument.description))"
     }
 }
@@ -33,15 +33,6 @@ public struct XMLDataMacro: MemberMacro {
         providingMembersOf declaration: some DeclGroupSyntax,
         in context: some MacroExpansionContext
     ) throws -> [DeclSyntax] {
-//        guard declaration.is(ClassDeclSyntax.self) else {
-//            let structError = Diagnostic(
-//                node: node,
-//                message: XMLDataDiagnostic.notAClass
-//            )
-//            context.diagnose(structError)
-//            return []
-//        }
-        
         guard let classDeclaration = declaration.as(ClassDeclSyntax.self) else {
             let structError = Diagnostic(
                 node: node,
@@ -77,11 +68,8 @@ public struct XMLDataMacro: MemberMacro {
             return []
         }
         
-        var trimmingCharacterSet: CharacterSet = .whitespacesAndNewlines
-        trimmingCharacterSet.insert("\"")
-        
         return arrayExprSyntax.elements.map {
-            "\($0.expression)".trimmingCharacters(in: trimmingCharacterSet)
+            "\($0.expression)".trimming()
         }.map {
             "var \(raw: $0): String?"
         }
@@ -115,27 +103,51 @@ public struct XMLParserMacro: ExpressionMacro {
         of node: some FreestandingMacroExpansionSyntax,
         in context: some MacroExpansionContext
     ) -> ExprSyntax {
-        guard let argument = node.argumentList.first?.expression else {
-            fatalError("compiler bug: the macro does not have any arguments")
+        let argumentList = node.argumentList.map{$0}
+        let tagName = argumentList[0].expression.description.trimming()
+        let dataName = argumentList[1].expression.description.trimming()
+        let valueName = argumentList[2].expression.description.trimming()
+        guard let labeledExprSyntax = argumentList[3].as(LabeledExprSyntax.self) else {
+            
+            return "LabeledExprSyntax"
         }
-        print(node.argumentList)
-        print(VariableDeclSyntax(
-            bindingSpecifier: .keyword(.var),
-            bindings: [
-                PatternBindingSyntax(
-                    pattern: IdentifierPatternSyntax(identifier: "name"),
-                    typeAnnotation: TypeAnnotationSyntax(
-                        colon: .colonToken(),
-                        type: IdentifierTypeSyntax(name: .identifier("String?"))
-                    )
-                )
-            ]
-        ))
+        print(labeledExprSyntax)
+        guard let arrayExprSyntax = labeledExprSyntax.expression.as(ArrayExprSyntax.self) else {
+            return "ArrayExprSyntax"
+        }
+        print(arrayExprSyntax)
+        return ExprSyntax(
+            stringLiteral: arrayExprSyntax
+                .elements
+                .enumerated()
+                .map {
+                    let expression = """
+                    if \(tagName) == \($0.element.expression) {
+                        \(dataName)?.\("\($0.element.expression)".trimming()) = \(valueName)
+                    }
+                    """
+                    return ($0.offset > 0 ? "else " : "") + expression
+                }.reduce("", +)
+        )
         
-//        if value == "airportEng" {
-//            tempItem?.airportEng = string
-//        } else
-        return "var raw: String?"
+        
+        //            bindingSpecifier: .keyword(.var),
+        //            bindings: [
+        //                PatternBindingSyntax(
+        //                    pattern: IdentifierPatternSyntax(
+        //                        leadingTrivia: .space,
+        //                        identifier: "name"
+        //                    ),
+        //                    typeAnnotation: TypeAnnotationSyntax(
+        //                        colon: .colonToken(),
+        //                        type: IdentifierTypeSyntax(
+        //                            leadingTrivia: .space,
+        //                            name: .identifier("String?")
+        //                        )
+        //                    )
+        //                )
+        //            ]
+        //        ))
     }
 }
 
