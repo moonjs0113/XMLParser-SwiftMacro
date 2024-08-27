@@ -18,12 +18,12 @@ final class XMLDataParserTests: XCTestCase {
         assertMacroExpansion(
     """
     @XMLPropertyList(tagNames: ["airportEng", "airportKor"])
-    struct MacroParkingLot {
+    class MacroParkingLot: NSObject {
     
     }
     """,
     expandedSource: """
-    struct MacroParkingLot {
+    class MacroParkingLot: NSObject {
     
         var airportEng: String?
     
@@ -38,6 +38,21 @@ final class XMLDataParserTests: XCTestCase {
 #endif
     }
     
+    func testXMLParser() throws {
+#if canImport(XMLDataParserMacros)
+        assertMacroExpansion(
+    """
+    #XMLPropertyParser("value","tempItem")
+    """,
+    expandedSource: """
+    var raw: String?
+    """,
+    macros: testMacros
+        )
+#else
+        throw XCTSkip("macros are only supported when running tests for the host platform")
+#endif
+    }
     
     func testMacro() throws {
         #if canImport(XMLDataParserMacros)

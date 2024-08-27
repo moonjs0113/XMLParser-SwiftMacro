@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7B028702C7DC89B0016E3F7 /* XMLDataParser in Frameworks */ = {isa = PBXBuildFile; productRef = C7B0286F2C7DC89B0016E3F7 /* XMLDataParser */; };
+		C7B028722C7DC89B0016E3F7 /* XMLDataParserClient in Frameworks */ = {isa = PBXBuildFile; productRef = C7B028712C7DC89B0016E3F7 /* XMLDataParserClient */; };
+		C7B028742C7DCF880016E3F7 /* ParkingLotXMLParser+Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B028732C7DCF880016E3F7 /* ParkingLotXMLParser+Macro.swift */; };
 		C7BCE4D62C621408001B684B /* XMLParser_SwiftMacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE4D52C621408001B684B /* XMLParser_SwiftMacroApp.swift */; };
 		C7BCE4D82C621408001B684B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE4D72C621408001B684B /* ContentView.swift */; };
 		C7BCE4DA2C62140A001B684B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BCE4D92C62140A001B684B /* Assets.xcassets */; };
@@ -17,13 +20,7 @@
 		C7BCE5002C621432001B684B /* XMLTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE4FF2C621432001B684B /* XMLTestData.swift */; };
 		C7BCE5022C621490001B684B /* ParkingLot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE5012C621490001B684B /* ParkingLot.swift */; };
 		C7BCE5052C6214BA001B684B /* ParkingLotXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE5042C6214BA001B684B /* ParkingLotXMLParser.swift */; };
-		C7BCE5092C62163A001B684B /* Macro+ParkingLot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE5082C62163A001B684B /* Macro+ParkingLot.swift */; };
-		C7BCE50D2C626AB2001B684B /* XMLDataParser in Frameworks */ = {isa = PBXBuildFile; productRef = C7BCE50C2C626AB2001B684B /* XMLDataParser */; };
-		C7BCE50F2C626AB2001B684B /* XMLDataParserClient in Frameworks */ = {isa = PBXBuildFile; productRef = C7BCE50E2C626AB2001B684B /* XMLDataParserClient */; };
-		C7BCE5122C626B0C001B684B /* SwiftCompilerPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = C7BCE5112C626B0C001B684B /* SwiftCompilerPlugin */; };
-		C7BCE5142C626B0C001B684B /* SwiftSyntaxMacros in Frameworks */ = {isa = PBXBuildFile; productRef = C7BCE5132C626B0C001B684B /* SwiftSyntaxMacros */; };
-		C7BCE5162C626C3C001B684B /* Macro+ParkingLotXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE5152C626C3C001B684B /* Macro+ParkingLotXMLParser.swift */; };
-		C7BCE5192C626D13001B684B /* XMLDataParser in Frameworks */ = {isa = PBXBuildFile; productRef = C7BCE5182C626D13001B684B /* XMLDataParser */; };
+		C7C4312E2C7DC1CD007FC294 /* ParkingLot+Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C4312D2C7DC1CD007FC294 /* ParkingLot+Macro.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C7B028732C7DCF880016E3F7 /* ParkingLotXMLParser+Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingLotXMLParser+Macro.swift"; sourceTree = "<group>"; };
 		C7BCE4D22C621408001B684B /* XMLParser+SwiftMacro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XMLParser+SwiftMacro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BCE4D52C621408001B684B /* XMLParser_SwiftMacroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser_SwiftMacroApp.swift; sourceTree = "<group>"; };
 		C7BCE4D72C621408001B684B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,9 +55,8 @@
 		C7BCE4FF2C621432001B684B /* XMLTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTestData.swift; sourceTree = "<group>"; };
 		C7BCE5012C621490001B684B /* ParkingLot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLot.swift; sourceTree = "<group>"; };
 		C7BCE5042C6214BA001B684B /* ParkingLotXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLotXMLParser.swift; sourceTree = "<group>"; };
-		C7BCE5072C621610001B684B /* XMLDataParser */ = {isa = PBXFileReference; lastKnownFileType = text; path = XMLDataParser; sourceTree = SOURCE_ROOT; };
-		C7BCE5082C62163A001B684B /* Macro+ParkingLot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Macro+ParkingLot.swift"; sourceTree = "<group>"; };
-		C7BCE5152C626C3C001B684B /* Macro+ParkingLotXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Macro+ParkingLotXMLParser.swift"; sourceTree = "<group>"; };
+		C7C4312D2C7DC1CD007FC294 /* ParkingLot+Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingLot+Macro.swift"; sourceTree = "<group>"; };
+		C7C431302C7DC439007FC294 /* XMLParser-SwiftMacro-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XMLParser-SwiftMacro-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7BCE50F2C626AB2001B684B /* XMLDataParserClient in Frameworks */,
-				C7BCE5192C626D13001B684B /* XMLDataParser in Frameworks */,
-				C7BCE50D2C626AB2001B684B /* XMLDataParser in Frameworks */,
-				C7BCE5142C626B0C001B684B /* SwiftSyntaxMacros in Frameworks */,
-				C7BCE5122C626B0C001B684B /* SwiftCompilerPlugin in Frameworks */,
+				C7B028722C7DC89B0016E3F7 /* XMLDataParserClient in Frameworks */,
+				C7B028702C7DC89B0016E3F7 /* XMLDataParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,11 +109,12 @@
 		C7BCE4D42C621408001B684B /* XMLParser+SwiftMacro */ = {
 			isa = PBXGroup;
 			children = (
+				C7C431302C7DC439007FC294 /* XMLParser-SwiftMacro-Info.plist */,
 				C7BCE4D52C621408001B684B /* XMLParser_SwiftMacroApp.swift */,
 				C7BCE4D72C621408001B684B /* ContentView.swift */,
 				C7BCE4FF2C621432001B684B /* XMLTestData.swift */,
 				C7BCE5032C6214A2001B684B /* XMLParser */,
-				C7BCE5062C6215B7001B684B /* SwiftMacro+XMLParser */,
+				C7C4312C2C7DC1B7007FC294 /* XMLParser+Macro */,
 				C7BCE4D92C62140A001B684B /* Assets.xcassets */,
 				C7BCE4DB2C62140A001B684B /* Preview Content */,
 			);
@@ -160,14 +155,13 @@
 			path = XMLParser;
 			sourceTree = "<group>";
 		};
-		C7BCE5062C6215B7001B684B /* SwiftMacro+XMLParser */ = {
+		C7C4312C2C7DC1B7007FC294 /* XMLParser+Macro */ = {
 			isa = PBXGroup;
 			children = (
-				C7BCE5072C621610001B684B /* XMLDataParser */,
-				C7BCE5082C62163A001B684B /* Macro+ParkingLot.swift */,
-				C7BCE5152C626C3C001B684B /* Macro+ParkingLotXMLParser.swift */,
+				C7C4312D2C7DC1CD007FC294 /* ParkingLot+Macro.swift */,
+				C7B028732C7DCF880016E3F7 /* ParkingLotXMLParser+Macro.swift */,
 			);
-			path = "SwiftMacro+XMLParser";
+			path = "XMLParser+Macro";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,11 +181,8 @@
 			);
 			name = "XMLParser+SwiftMacro";
 			packageProductDependencies = (
-				C7BCE50C2C626AB2001B684B /* XMLDataParser */,
-				C7BCE50E2C626AB2001B684B /* XMLDataParserClient */,
-				C7BCE5112C626B0C001B684B /* SwiftCompilerPlugin */,
-				C7BCE5132C626B0C001B684B /* SwiftSyntaxMacros */,
-				C7BCE5182C626D13001B684B /* XMLDataParser */,
+				C7B0286F2C7DC89B0016E3F7 /* XMLDataParser */,
+				C7B028712C7DC89B0016E3F7 /* XMLDataParserClient */,
 			);
 			productName = "XMLParser+SwiftMacro";
 			productReference = C7BCE4D22C621408001B684B /* XMLParser+SwiftMacro.app */;
@@ -266,8 +257,7 @@
 			);
 			mainGroup = C7BCE4C92C621408001B684B;
 			packageReferences = (
-				C7BCE5102C626B0C001B684B /* XCRemoteSwiftPackageReference "swift-syntax" */,
-				C7BCE5172C626D13001B684B /* XCLocalSwiftPackageReference "XMLDataParser" */,
+				C7B0286E2C7DC89B0016E3F7 /* XCLocalSwiftPackageReference "XMLDataParser" */,
 			);
 			productRefGroup = C7BCE4D32C621408001B684B /* Products */;
 			projectDirPath = "";
@@ -311,11 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7BCE5162C626C3C001B684B /* Macro+ParkingLotXMLParser.swift in Sources */,
+				C7C4312E2C7DC1CD007FC294 /* ParkingLot+Macro.swift in Sources */,
+				C7B028742C7DCF880016E3F7 /* ParkingLotXMLParser+Macro.swift in Sources */,
 				C7BCE4D82C621408001B684B /* ContentView.swift in Sources */,
 				C7BCE5002C621432001B684B /* XMLTestData.swift in Sources */,
 				C7BCE5022C621490001B684B /* ParkingLot.swift in Sources */,
-				C7BCE5092C62163A001B684B /* Macro+ParkingLot.swift in Sources */,
 				C7BCE4D62C621408001B684B /* XMLParser_SwiftMacroApp.swift in Sources */,
 				C7BCE5052C6214BA001B684B /* ParkingLotXMLParser.swift in Sources */,
 			);
@@ -484,6 +474,7 @@
 				DEVELOPMENT_TEAM = Z629PZ4XVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "XMLParser-SwiftMacro-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -513,6 +504,7 @@
 				DEVELOPMENT_TEAM = Z629PZ4XVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "XMLParser-SwiftMacro-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -649,45 +641,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		C7BCE5172C626D13001B684B /* XCLocalSwiftPackageReference "XMLDataParser" */ = {
+		C7B0286E2C7DC89B0016E3F7 /* XCLocalSwiftPackageReference "XMLDataParser" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = XMLDataParser;
 		};
 /* End XCLocalSwiftPackageReference section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		C7BCE5102C626B0C001B684B /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-syntax.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 510.0.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		C7BCE50C2C626AB2001B684B /* XMLDataParser */ = {
+		C7B0286F2C7DC89B0016E3F7 /* XMLDataParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XMLDataParser;
 		};
-		C7BCE50E2C626AB2001B684B /* XMLDataParserClient */ = {
+		C7B028712C7DC89B0016E3F7 /* XMLDataParserClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XMLDataParserClient;
-		};
-		C7BCE5112C626B0C001B684B /* SwiftCompilerPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C7BCE5102C626B0C001B684B /* XCRemoteSwiftPackageReference "swift-syntax" */;
-			productName = SwiftCompilerPlugin;
-		};
-		C7BCE5132C626B0C001B684B /* SwiftSyntaxMacros */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C7BCE5102C626B0C001B684B /* XCRemoteSwiftPackageReference "swift-syntax" */;
-			productName = SwiftSyntaxMacros;
-		};
-		C7BCE5182C626D13001B684B /* XMLDataParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = XMLDataParser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

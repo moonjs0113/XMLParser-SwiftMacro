@@ -1,16 +1,16 @@
 //
-//  ParkingLotXMLParser.swift
+//  ParkingLotXMLParser+Macro.swift
 //  XMLParser+SwiftMacro
 //
-//  Created by Moon Jongseek on 8/6/24.
+//  Created by Moon Jongseek on 8/27/24.
 //
 
 import Foundation
 
-final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
+final class MacroParkingLotXMLParserM: NSObject, XMLParserDelegate {
     private var value: String?
-    private var itemList: [ParkingLot] = []
-    private var tempItem: ParkingLot?
+    private var itemList: [MacroParkingLot] = []
+    private var tempItem: MacroParkingLot?
     
     func parser(
         _ parser: XMLParser,
@@ -20,7 +20,7 @@ final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
         attributes attributeDict: [String : String] = [:]
     ) {
         if elementName == "item" {
-            self.tempItem = ParkingLot()
+            self.tempItem = MacroParkingLot()
         }
         self.value = elementName
     }
@@ -40,6 +40,7 @@ final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return }
+        
         if value == "airportEng" {
             tempItem?.airportEng = string
         } else if value == "airportKor" {
@@ -67,7 +68,8 @@ final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
         }
     }
     
-    public func getPackingLotDataList() -> [ParkingLot] {
+    public func getPackingLotDataList() -> [MacroParkingLot] {
         return self.itemList
     }
 }
+
