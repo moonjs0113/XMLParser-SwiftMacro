@@ -162,6 +162,9 @@ final class ParkingLotXMLParser: NSObject, XMLParserDelegate {
 
 ## Conclusion
 - 매크로 작동 시점과 원리에 대한 이해 필요
+
 What’s new in Swift(Macro Section) - https://developer.apple.com/videos/play/wwdc2023/10164/
+
 Write Swift macros - https://developer.apple.com/videos/play/wwdc2023/10166/
+
 Expand on Swift macros - https://developer.apple.com/videos/play/wwdc2023/10167
