@@ -8,7 +8,7 @@
 import Foundation
 import XMLDataParser
 
-final class MacroParkingLotXMLParserM: NSObject, XMLParserDelegate {
+final class MacroParkingLotXMLParser: NSObject, XMLParserDelegate {
     private var tagName: String?
     private var itemList: [MacroParkingLot] = []
     private var data: MacroParkingLot?
@@ -41,8 +41,8 @@ final class MacroParkingLotXMLParserM: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return }
-        let propertyList = Mirror(reflecting: MacroParkingLot()).children.compactMap { $0.label }
-        #XMLPropertyParser("tagName", "data", "string", propertyNames: propertyList)
+//        let propertyList = Mirror(reflecting: MacroParkingLot()).children.compactMap { $0.label }
+        #XMLPropertyParser("tagName", "data", "string", propertyNames: ["airportEng", "airportKor", "parkingAirportCodeName", "parkingCongestion", "parkingCongestionDegree", "parkingOccupiedSpace", "parkingTotalSpace", "sysGetdate", "sysGettime"])
 //        if value == "airportEng" {
 //            tempItem?.airportEng = string
 //        } else if value == "airportKor" {

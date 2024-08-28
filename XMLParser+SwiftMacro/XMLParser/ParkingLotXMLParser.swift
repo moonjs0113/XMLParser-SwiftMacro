@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
-    private var value: String?
+final class ParkingLotXMLParser: NSObject, XMLParserDelegate {
+    private var tagName: String?
     private var itemList: [ParkingLot] = []
-    private var tempItem: ParkingLot?
+    private var data: ParkingLot?
     
     func parser(
         _ parser: XMLParser,
@@ -20,9 +20,9 @@ final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
         attributes attributeDict: [String : String] = [:]
     ) {
         if elementName == "item" {
-            self.tempItem = ParkingLot()
+            self.data = ParkingLot()
         }
-        self.value = elementName
+        self.tagName = elementName
     }
     
     func parser(
@@ -31,33 +31,33 @@ final class ParkingLotXMLParserM: NSObject, XMLParserDelegate {
         namespaceURI: String?,
         qualifiedName qName: String?) {
             if elementName == "item" {
-                if let tempItem {
-                    self.itemList.append(tempItem)
+                if let data {
+                    self.itemList.append(data)
                 }
-                self.tempItem = nil
+                self.data = nil
             }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return }
-        if value == "airportEng" {
-            tempItem?.airportEng = string
-        } else if value == "airportKor" {
-            tempItem?.airportKor = string
-        } else if value == "parkingAirportCodeName" {
-            tempItem?.parkingAirportCodeName = string
-        } else if value == "parkingCongestion" {
-            tempItem?.parkingCongestion = string
-        } else if value == "parkingCongestionDegree" {
-            tempItem?.parkingCongestionDegree = string
-        } else if value == "parkingOccupiedSpace" {
-            tempItem?.parkingOccupiedSpace = string
-        } else if value == "parkingTotalSpace" {
-            tempItem?.parkingTotalSpace = string
-        } else if value == "sysGetdate" {
-            tempItem?.sysGetdate = string
-        } else if value == "sysGettime" {
-            tempItem?.sysGettime = string
+        if tagName == "airportEng" {
+            data?.airportEng = string
+        } else if tagName == "airportKor" {
+            data?.airportKor = string
+        } else if tagName == "parkingAirportCodeName" {
+            data?.parkingAirportCodeName = string
+        } else if tagName == "parkingCongestion" {
+            data?.parkingCongestion = string
+        } else if tagName == "parkingCongestionDegree" {
+            data?.parkingCongestionDegree = string
+        } else if tagName == "parkingOccupiedSpace" {
+            data?.parkingOccupiedSpace = string
+        } else if tagName == "parkingTotalSpace" {
+            data?.parkingTotalSpace = string
+        } else if tagName == "sysGetdate" {
+            data?.sysGetdate = string
+        } else if tagName == "sysGettime" {
+            data?.sysGettime = string
         }
     }
     

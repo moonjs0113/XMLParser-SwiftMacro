@@ -9,7 +9,7 @@ import Foundation
 import XMLDataParser
 
 @XMLPropertyList(tagNames: ["airportEng", "airportKor", "parkingAirportCodeName", "parkingCongestion", "parkingCongestionDegree", "parkingOccupiedSpace", "parkingTotalSpace", "sysGetdate", "sysGettime"])
-class MacroParkingLot: NSObject {
+struct MacroParkingLot {
     
 }
 

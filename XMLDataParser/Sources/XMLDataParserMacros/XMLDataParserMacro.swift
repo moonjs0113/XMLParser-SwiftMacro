@@ -33,33 +33,33 @@ public struct XMLDataMacro: MemberMacro {
         providingMembersOf declaration: some DeclGroupSyntax,
         in context: some MacroExpansionContext
     ) throws -> [DeclSyntax] {
-        guard let classDeclaration = declaration.as(ClassDeclSyntax.self) else {
+        guard let classDeclaration = declaration.as(StructDeclSyntax.self) else {
             let structError = Diagnostic(
                 node: node,
-                message: XMLDataDiagnostic.notAClass
+                message: XMLDataDiagnostic.notStruct
             )
             context.diagnose(structError)
             return []
         }
         
-        guard let inheritanceClause = classDeclaration.inheritanceClause else {
-            let structError = Diagnostic(
-                node: node,
-                message: XMLDataDiagnostic.notNSObject
-            )
-            context.diagnose(structError)
-            return []
-        }
-        
-        let inheritedTypes = inheritanceClause.inheritedTypes.compactMap { $0.type.as(IdentifierTypeSyntax.self)?.name.text }
-        if !inheritedTypes.contains("NSObject") {
-            let structError = Diagnostic(
-                node: node,
-                message: XMLDataDiagnostic.notNSObject
-            )
-            context.diagnose(structError)
-            return []
-        }
+//        guard let inheritanceClause = classDeclaration.inheritanceClause else {
+//            let inheritanceError = Diagnostic(
+//                node: node,
+//                message: XMLDataDiagnostic.notNSObject
+//            )
+//            context.diagnose(inheritanceError)
+//            return []
+//        }
+//        
+//        let inheritedTypes = inheritanceClause.inheritedTypes.compactMap { $0.type.as(IdentifierTypeSyntax.self)?.name.text }
+//        if !inheritedTypes.contains("NSObject") {
+//            let inheritanceError = Diagnostic(
+//                node: node,
+//                message: XMLDataDiagnostic.notNSObject
+//            )
+//            context.diagnose(inheritanceError)
+//            return []
+//        }
         
         guard let labeledExprListSyntax = node.arguments?.as(LabeledExprListSyntax.self) as? LabeledExprListSyntax else {
             return []
@@ -77,11 +77,14 @@ public struct XMLDataMacro: MemberMacro {
 }
 
 enum XMLDataDiagnostic: String, DiagnosticMessage {
+    case notStruct
     case notAClass
     case notNSObject
     
     var message: String {
         switch self {
+        case .notStruct:
+            return "'@XMLDataMacro' can only be applied to a 'struct'"
         case .notAClass:
             return "'@XMLDataMacro' can only be applied to a 'class'"
         case .notNSObject:
